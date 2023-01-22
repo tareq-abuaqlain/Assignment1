@@ -1,7 +1,7 @@
 const {
-  getAllProductsQuery, filterProductCategoryQuery,
+  getAllProductsQuery, filterProductCategoryQuery, getAllCategoryQuery,
 } = require('./getAllProductsQuery');
 
 module.exports = {
-  getAllProductsQuery, filterProductCategoryQuery,
+  getAllProductsQuery, filterProductCategoryQuery, getAllCategoryQuery,
 };
