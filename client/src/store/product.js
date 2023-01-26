@@ -21,15 +21,19 @@ const productSlice = createSlice({
     sortProductByName: (state, action) => {
       if (action.payload) {
         state.data = state.data.sort((a, b) => b.product_name.localeCompare(a.product_name));
+        state.filteredData = state.filteredData.sort((a, b) => b.product_name.localeCompare(a.product_name));
       } else {
         state.data = state.data.sort((a, b) => a.product_name.localeCompare(b.product_name));
+        state.filteredData = state.filteredData.sort((a, b) => a.product_name.localeCompare(b.product_name));
       }
     },
     sortProductByPrice: (state, action) => {
       if (action.payload) {
         state.data = state.data.sort((a, b) => b.price - a.price);
+        state.filteredData = state.filteredData.sort((a, b) => b.price - a.price);
       } else {
         state.data = state.data.sort((a, b) => a.price - b.price);
+        state.filteredData = state.filteredData.sort((a, b) => a.price - b.price);
       }
     },
     filterProductByCategory: (state, action) => {
@@ -37,8 +41,14 @@ const productSlice = createSlice({
       state.totalNumber = action.payload.totalNumber;
       state.totalPrice = action.payload.totalPrice;
     },
+    cacheProduct: (state, action) => {
+      state.data = action.payload.data;
+      state.totalNumber = action.payload.totalNumber;
+      state.totalPrice = action.payload.totalPrice;
+      state.categories = action.payload.categories;
+    }
   },
 });
 
-export const { addProduct, sortProductByName, sortProductByPrice, filterProductByCategory } = productSlice.actions;
+export const { addProduct, sortProductByName, sortProductByPrice, filterProductByCategory, cacheProduct } = productSlice.actions;
 export default productSlice.reducer;
